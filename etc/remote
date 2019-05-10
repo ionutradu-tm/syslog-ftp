@@ -1,0 +1,11 @@
+/var/log/remote/remote.log
+{
+        rotate 24
+        hourly
+        missingok
+        delaycompress
+        compress
+        postrotate
+                /usr/local/bin/ftp-upload.sh
+        endscript
+}

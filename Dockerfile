@@ -14,6 +14,7 @@ ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/*.sh
 
 ADD etc/rsyslog.conf /etc/
+ADD etc/remote /etc/logrotate.d/
 
 EXPOSE 514/tcp
 EXPOSE 514/udp
