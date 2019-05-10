@@ -4,7 +4,6 @@
         hourly
         size 100k
         missingok
-        compress
         postrotate
                 /usr/local/bin/ftp-upload.sh
         endscript
