@@ -13,8 +13,10 @@ RUN apt-get clean autoclean && \
 ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/*.sh
 
+RUN rm -f /etc/logrotate.d/*
 ADD etc/rsyslog.conf /etc/
 ADD etc/remote /etc/logrotate.d/
+ADD etc/crontab /etc/
 
 EXPOSE 514/tcp
 EXPOSE 514/udp

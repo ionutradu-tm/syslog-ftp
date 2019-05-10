@@ -5,6 +5,6 @@
         size 100k
         missingok
         postrotate
-                /usr/local/bin/ftp-upload.sh
+                killall -HUP rsyslogd
         endscript
 }

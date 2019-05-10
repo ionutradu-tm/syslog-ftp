@@ -7,6 +7,7 @@ mkdir -p /var/log/remote
 mv /etc/cron.daily/logrotate /etc/cron.hourly/
 
 # start cron service
+crontab /etc/crontab
 service cron start
 
 # Run RSyslog daemon
