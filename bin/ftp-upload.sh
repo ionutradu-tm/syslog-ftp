@@ -13,8 +13,8 @@ if [[ -n GREP_EXCLUDE_WORD ]];
    then
       egrep -i -v $GREP_EXCLUDE_WORD $LOG_FILENAME | gzip > $LOG_TMP_FILE
    else
-       mv  $LOG_FILENAME  $LOG_TMP_FILE
-
+       cat  $LOG_FILENAME | gzip > $LOG_TMP_FILE
+       rm $LOG_FILENAME
 fi
 
 # upload to FTP server
