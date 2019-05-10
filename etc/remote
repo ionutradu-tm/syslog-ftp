@@ -1,11 +1,12 @@
 /var/log/remote/remote.log
 {
-        rotate 24
+        rotate 240
         hourly
+        size 100k
         missingok
-        delaycompress
         compress
         postrotate
+                /usr/lib/rsyslog/rsyslog-rotate
                 /usr/local/bin/ftp-upload.sh
         endscript
 }
