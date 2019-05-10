@@ -4,7 +4,7 @@ MAINTAINER Ionut Radu <iradu@iradu.ro>
 
 # install packages
 RUN apt-get update && \
-    apt-get install -y cron logrotate rsyslog curl
+    apt-get install -y  apt-utils cron logrotate rsyslog curl
 
 #cleanup
 RUN apt-get clean autoclean && \

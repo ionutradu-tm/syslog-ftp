@@ -6,7 +6,6 @@
         missingok
         compress
         postrotate
-                /usr/lib/rsyslog/rsyslog-rotate
                 /usr/local/bin/ftp-upload.sh
         endscript
 }

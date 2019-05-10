@@ -3,7 +3,7 @@
 
 if [[ -z $FTP_HOST ]] || [[ -z $FTP_USER ]] || [[ -z $FTP_PASS ]] || [[ -z $FTP_REMOTE_FOLDER ]] || [[ -z $LOG_FILENAME ]] || [[ -z $FTP_PORT ]]; then
     echo "Please provide FTP_HOST, FTP_USER, FTP_PASS, FTP_REMOTE_FOLDER, LOG_FILENAME"
-    exit (1)
+    exit 1
 fi
 
 LOG_TMP_FILE="/var/log/tmp/access.log-$(date +%Y-%m-%d-%T).gz"
