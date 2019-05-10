@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#delete default rsyslog conf
+
 
 service cron start
 
