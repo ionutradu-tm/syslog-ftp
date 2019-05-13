@@ -10,12 +10,11 @@ mv /etc/cron.daily/logrotate /etc/cron.hourly/
 crontab /etc/crontab
 service cron start
 
-FTP_USER=integration
-FTP_PORT=31021
-FTP_REMOTE_FOLDER=upload/nginx
-FTP_PASS=m8u;MVw7EqaEVx8Z
-FTP_HOST=ftp.marathon.mesos
 
+if [[ -z $FTP_HOST ]] || [[ -z $FTP_USER ]] || [[ -z $FTP_PASS ]] || [[ -z $FTP_REMOTE_FOLDER ]] || [[ -z $LOG_FILENAME ]] || [[ -z $FTP_PORT ]]; then
+    echo "Please provide FTP_HOST, FTP_USER, FTP_PASS, FTP_REMOTE_FOLDER, LOG_FILENAME"
+    exit 1
+fi
 # prepare env variables
 echo "#!/bin/bash" > /usr/local/bin/env.sh
 echo "export FTP_USER=$FTP_USER" >>/usr/local/bin/env.sh
