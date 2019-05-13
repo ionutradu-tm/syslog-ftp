@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source /usr/local/bin/env.sh
 
 if [[ -z $FTP_HOST ]] || [[ -z $FTP_USER ]] || [[ -z $FTP_PASS ]] || [[ -z $FTP_REMOTE_FOLDER ]] || [[ -z $LOG_FILENAME ]] || [[ -z $FTP_PORT ]]; then
     echo "Please provide FTP_HOST, FTP_USER, FTP_PASS, FTP_REMOTE_FOLDER, LOG_FILENAME"
@@ -9,7 +10,7 @@ fi
 LOG_TMP_FILE="/var/log/tmp/access.log-$(date +%Y-%m-%d-%T).gz"
 
 # test if the file exists
-if [[ ! -f $LOG_FILENAME]];then
+if [[ ! -f $LOG_FILENAME ]]; then
   exit 2
 fi
 
