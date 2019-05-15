@@ -24,7 +24,7 @@ echo "export FTP_PORT=\"$FTP_PORT\"" >>/usr/local/bin/env.sh
 echo "export FTP_REMOTE_FOLDER=\"$FTP_REMOTE_FOLDER\"" >>/usr/local/bin/env.sh
 echo "export LOG_FILENAME=\"$LOG_FILENAME\"" >>/usr/local/bin/env.sh
 if [[ -n $GREP_EXCLUDE ]]; then
-   echo "export GREP_EXCLUDE_WORD=\"$GREP_EXCLUDE\"" >>/usr/local/bin/env.sh
+   echo "export GREP_EXCLUDE=\"$GREP_EXCLUDE\"" >>/usr/local/bin/env.sh
 fi
 
 chmod +x /usr/local/bin/env.sh
