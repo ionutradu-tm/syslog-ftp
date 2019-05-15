@@ -14,9 +14,9 @@ if [[ ! -f $LOG_FILENAME ]]; then
   exit 2
 fi
 
-if [[ -n $GREP_EXCLUDE_WORD ]];
+if [[ -n $GREP_EXCLUDE ]];
    then
-      egrep -i -v $GREP_EXCLUDE_WORD $LOG_FILENAME | gzip > $LOG_TMP_FILE
+      egrep -i -v $GREP_EXCLUDE $LOG_FILENAME | gzip > $LOG_TMP_FILE
       rm -f $LOG_FILENAME
    else
        cat  $LOG_FILENAME | gzip > $LOG_TMP_FILE
