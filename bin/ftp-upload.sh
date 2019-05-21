@@ -46,9 +46,11 @@ done
 
 if [[ "$SEND_EMAIL" -eq "1" ]]; then
     if [[ "$uploaded" -eq "1" ]];then
-           curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_succes.txt
+        sed -i -r "s/SMTP_TO/$SMTP_TO/g" /body_mail_succes.txt
+        curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_succes.txt
     fi
     if [[ "$fail_upload" -eq "1" ]];then
-           curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_fail.txt
+        sed -i -r "s/SMTP_TO/$SMTP_TO/g" /body_mail_fail.txt
+        curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_fail.txt
     fi
 fi

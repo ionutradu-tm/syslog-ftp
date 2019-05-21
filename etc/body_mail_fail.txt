@@ -1,0 +1,6 @@
+From: "Upload nginx logs" <no-reply@essntracomponents.com>
+To: SMTP_TO
+Subject: Upload nginx logs
+
+Hello,
+

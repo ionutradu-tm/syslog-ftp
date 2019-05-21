@@ -17,6 +17,8 @@ RUN rm -f /etc/logrotate.d/*
 ADD etc/rsyslog.conf /etc/
 ADD etc/remote /etc/logrotate.d/
 ADD etc/crontab /etc/
+ADD etc/body_mail_fail.txt /
+ADD etc/body_mail_succes.txt /
 
 EXPOSE 514/tcp
 EXPOSE 514/udp
