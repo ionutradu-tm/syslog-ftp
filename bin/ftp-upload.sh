@@ -40,7 +40,7 @@ do
        echo "$FILE_UPLOAD uploaded to FTP server $FTP_HOST" >>/body_mail_succes.txt
     else
        export fail_upload = 1
-       echo "$FILE_UPLOAD uploaded failed to FTP server $FTP_HOST" >>/body_mail_fail.txt
+       echo "$FILE_UPLOAD not uploaded to FTP server $FTP_HOST" >>/body_mail_fail.txt
     fi
 done
 
