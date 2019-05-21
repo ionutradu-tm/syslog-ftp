@@ -8,6 +8,6 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # m h dom mon dow user  command
-13 *     * * *   root    cd / && run-parts --report /etc/cron.hourly
-19 *     * * *   root    /usr/local/bin/ftp-upload.sh
+10 1     * * *   root    cd / && run-parts --report /etc/cron.hourly
+30 *     * * *   root    /usr/local/bin/ftp-upload.sh
 #

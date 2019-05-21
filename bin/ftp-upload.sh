@@ -9,6 +9,12 @@ fi
 
 LOG_TMP_FILE="/var/log/tmp/access.log-$(date +%Y-%m-%d-%T).gz"
 
+# SMTP
+export SEND_EMAIL=0
+if [[ -n $SMTP_TO ]] && [[ -n SMTP_SERVER ]] && [[ -n SMTP_PORT ]] && [[ -n SMTP_FROM ]]; then
+    export SEND_EMAIL=1
+fi
+
 # test if the file exists
 if [[ ! -f $LOG_FILENAME ]]; then
   exit 2
@@ -30,5 +36,19 @@ do
     if [ $? -eq 0 ]; then
        echo "$FILE_UPLOAD sent to FTP server $FTP_HOST"
        rm $FILE_UPLOAD
+       export uploaded = 1
+       echo "$FILE_UPLOAD uploaded to FTP server $FTP_HOST" >>/body_mail_succes.txt
+    else
+       export fail_upload = 1
+       echo "$FILE_UPLOAD uploaded failed to FTP server $FTP_HOST" >>/body_mail_fail.txt
     fi
 done
+
+if [[ "$SEND_EMAIL" -eq "1" ]]; then
+    if [[ "$uploaded" -eq "1" ]];then
+           curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_succes.txt
+    fi
+    if [[ "$fail_upload" -eq "1" ]];then
+           curl -v --connect-timeout 15 --insecure "smtp://$SMTP_SERVER:$SMTP_PORT" --mail-from $SMTP_FROM --mail-rcpt $SMTP_TO   -T /body_mail_fail.txt
+    fi
+fi
